@@ -88,37 +88,37 @@ it('can login an existing user with a specific id', function () {
 });
 
 it('can create and login a user with specific attributes', function () {
-    $data = ['user_attributes' => json_encode(['role' => 'admin'])];
+    $data = ['user_attributes' => json_encode(['role' => 'senior admin'])];
 
     post(route('loginLinkLogin'), $data)->assertRedirect();
 
-    expectUserToBeLoggedIn(['role' => 'admin']);
+    expectUserToBeLoggedIn(['role' => 'senior admin']);
     expect(User::count())->toBe(1);
 });
 
 it('can create login an existing user with specific attributes', function () {
-    User::factory()->create(['role' => 'admin']);
+    User::factory()->create(['role' => 'senior admin']);
     expect(User::count())->toBe(1);
 
-    $data = ['user_attributes' => json_encode(['role' => 'admin'])];
+    $data = ['user_attributes' => json_encode(['role' => 'senior admin'])];
 
     post(route('loginLinkLogin'), $data)->assertRedirect();
 
-    expectUserToBeLoggedIn(['role' => 'admin']);
+    expectUserToBeLoggedIn(['role' => 'senior admin']);
     expect(User::count())->toBe(1);
 });
 
 it('can create a user with both email and custom attributes', function () {
     $data = [
         'email' => 'freek@spatie.be',
-        'user_attributes' => json_encode(['role' => 'admin']),
+        'user_attributes' => json_encode(['role' => 'senior admin']),
     ];
 
     post(route('loginLinkLogin'), $data)->assertRedirect();
 
     expectUserToBeLoggedIn([
         'email' => 'freek@spatie.be',
-        'role' => 'admin',
+        'role' => 'senior admin',
     ]);
 });
 
