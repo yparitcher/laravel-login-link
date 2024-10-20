@@ -29,7 +29,7 @@ it('can render a login link with a custom label', function () {
 });
 
 it('can render a login link with custom user attributes', function () {
-    $html = Blade::render('<x-login-link :user-attributes="[\'role\' => \'admin\']" />');
+    $html = Blade::render('<x-login-link :user-attributes="[\'role\' => \'senior admin\']" />');
 
     assertMatchesHtmlSnapshot($html);
 });
